@@ -1,79 +1,777 @@
 <!DOCTYPE html>
 <html>
-
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Souradeep de wwwizard : " />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Souradeep de wwwizard</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/desouradeep/souradeep_de_wwwizard">View on GitHub</a>
-
-          <h1 id="project_title">Souradeep de wwwizard</h1>
-          <h2 id="project_tagline"></h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/desouradeep/souradeep_de_wwwizard/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/desouradeep/souradeep_de_wwwizard/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Souradeep de wwwizard maintained by <a href="https://github.com/desouradeep">desouradeep</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
+<head>
+    <title>Horizon '14</title>
+    <meta charset="utf-8">
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" />
     
+    <style>
+    body {
+        padding-top: 50px;
+    }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script> 
+    <script src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.nav-event').click(function(){
+            $('.event').hide()
+            $('.nav-event').removeClass('active')
+            var id = $(this).attr('id');
+            $('#'+id).addClass('active')
+            var detail_id = 'event'+ '-' +id.substring('4')
+            $('#'+detail_id).fadeIn()
+        })
+        $('.nav-element').click(function(e){
+            e.preventDefault();
+            $('.nav-element').removeClass('active')
+            $(this).addClass('active')
+            index = $(this).attr('id').lastIndexOf('-')
+            elem_id = $(this).attr('id').substring(index+1)
 
-  </body>
+            $('html,body').animate({scrollTop: $('#'+elem_id).offset().top}, 1200, 'swing');
+        })
+        $('.navbar-brand').click(function(){
+            $('.nav-element').removeClass('active')
+        })
+
+        $(window).bind('scroll',function(e){
+            parallaxScroll();
+        });
+
+        function parallaxScroll(){
+            var scrolledY = $(window).scrollTop();
+            $('#home').css('background-position','center -'+(scrolledY*0.2)+'px');
+        }
+
+        $('#start').click(function(){
+            $('.nav-element').removeClass('active')
+            $('#nav-element-events').addClass('active')
+            $('html,body').animate({scrollTop: $('#events').offset().top}, 1200, 'swing');
+            
+        })
+    })
+</script>
+
+<style type="text/css">
+@font-face {
+    font-family: "Aaargh";
+    src: url(static/fonts/Aaargh.ttf) format("truetype");
+}
+
+body { 
+    font-family: "Aaargh", sans-serif;
+    font-size: 14px;
+}
+
+h1,h2,h3,h4,h5,h6,p,b { 
+    font-family: "Aaargh", sans-serif 
+}
+
+/* Removes the default 20px margin and creates some padding space for the indicators and controls */
+.carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+}
+/* Reposition the controls slightly */
+.carousel-control {
+    left: -12px;
+}
+.carousel-control.right {
+    right: -12px;
+}
+/* Changes the position of the indicators */
+.carousel-indicators {
+    right: 50%;
+    top: auto;
+    bottom: 0px;
+    margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.carousel-indicators li {
+    background: #c0c0c0;
+}
+.carousel-indicators .active {
+    background: #333333;
+}
+.carousel-image {
+    display: block;
+    margin: auto;
+}
+
+#home{
+    background:url(static/images/backgrounds/home.jpg) 50% 0 no-repeat fixed;
+    color: white;
+    height: 600px;
+    padding: 9px 0 0 0;
+    background-size: cover;
+}
+
+
+#events{
+    background: url(static/images/backgrounds/events.jpg) 50% 0 no-repeat fixed;
+    height: 1000px;
+    overflow: hidden;
+    padding: 0;
+    background-size: cover;
+}
+
+#guests{
+    background: url(static/images/backgrounds/guests.jpg) 50% 0 no-repeat fixed;
+    height: 400px;
+    overflow: hidden;
+    padding: 0;
+    background-size: cover;
+}
+
+#sponsors{
+    background: url(static/images/backgrounds/sponsors.jpg) 50% 0 no-repeat fixed;
+    height: 550px;
+    overflow: hidden;
+    padding: 0;
+    background-size: cover;
+}
+
+#gallery{
+    background: url(static/images/backgrounds/gallery.jpg) 50% 0 no-repeat fixed;
+    height: 730px;
+    overflow: hidden;
+    padding: 0;
+    background-size: cover;
+}
+
+#videos{
+    background: url(static/images/backgrounds/videos.jpg) 50% 0 no-repeat fixed;
+    height: 700px;
+    overflow: hidden;
+    padding: 0;
+    background-size: cover;
+}
+
+#contactus{
+    background: url(static/images/backgrounds/contactus.jpg) 50% 0 no-repeat fixed;
+    height: 680px;
+    overflow: hidden;
+    padding: 0;
+    background-size: cover;
+}
+
+.btn-start{
+    background: rgba(0,0,0, 0);
+    border:4px solid #fff;
+    color:#fff;
+    padding: 19px 24px;
+    font-size: 24px;
+    font-weight: 200;
+    margin-top:40px;
+    z-index:2;
+}
+
+.btn-start:hover{
+    background: rgba(0,0,0, 0.5);
+    color:#fff;
+    padding: 19px 24px;
+    font-size: 24px;
+    font-weight: 200;
+    margin-top:40px;
+    z-index:2;
+}
+
+</style>
+</head>
+<body>
+    <!-- NAVBAR =========================================================================-->
+    <nav class="navbar  navbar-default navbar-inverse navbar-fixed-top transparent" role="navigation" style='box-shadow: 0px 2px 4px #353535;background-color: #061A28;opacity:0.9'>
+        <div class="container">
+            <div class="navbar-header">
+                <a id='nav-element-home' class="navbar-brand nav-element" style='color:white;' href="#"><b>Horizon '13</b></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul id='navbar' class="nav navbar-nav">
+                    <li id='nav-element-events' class='nav-element'><a style='color:white;' href='#'>Events</a></li>
+                    <li id='nav-element-guests' class='nav-element'><a style='color:white;' href="#">Guests</a></li>
+                    <li id='nav-element-sponsors' class='nav-element'><a style='color:white;' href="#">Sponsors</a></li>
+                    <li id='nav-element-gallery' class='nav-element'><a style='color:white;' href="#">Gallery</a></li>
+                    <li id='nav-element-videos' class='nav-element'><a style='color:white;' href="#">Videos</a></li>
+                </ul>
+                <ul class='nav navbar-nav navbar-right'>
+                    <li id='nav-element-contactus' class='nav-element'><a style='color:white;' href='#'>Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--NAVBAR END========================================================================-->
+    <!--HOME
+    ======================================================================================-->
+    <div  id='home'>
+        <div class='container' style='margin-top:10%'>
+            <br><br>
+            <h1 style='color:white;font-size:60px;text-shadow:0px 4px grey;text-align:center;'><b>HORIZON 2013</b></h1><br>
+            <h2 style='color:white;text-shadow:0px 2px grey;margin-left:1.5%;'>The annual technical fest of Dr. B. C. Roy Engineering College, Durgapur.</h2>
+            <br><br>
+            <button id='start' class='btn btn-large btn-start' style='margin-left:42%;font-size:20px;'>Get Started</button>
+        </div>
+    </div>
+    <!--HOME ENDS
+    ======================================================================================-->
+
+    <!--EVENTS
+    ======================================================================================-->
+    <div id="events">
+        <div class="container">
+            <br><br>
+            <h2 style='color:white;'><b>EVENTS</b></h2><hr>
+            <div class='container row' style='opacity:0.9'>
+                <div class='col-xs-2 list-group'>
+                    <a href="#events" class='list-group-item nav-event active' id='nav-major'>Major Events<span class='glyphicon glyphicon-chevron-right pull-right'></span></a>
+                    <a href="#events" class='list-group-item nav-event ' id='nav-gamathon'>Gamathon<span class='glyphicon glyphicon-chevron-right pull-right'></span></a>
+                    <a href="#events" class='list-group-item nav-event' id='nav-online'>Online Events<span class='glyphicon glyphicon-chevron-right pull-right'></span></a>
+                    <a href="#events" class='list-group-item nav-event' id='nav-cse' >CSE and IT<span class='glyphicon glyphicon-chevron-right pull-right'></span></a>
+                    <a href="#events" class='list-group-item nav-event' id='nav-me' >MECH and CE<span class='glyphicon glyphicon-chevron-right pull-right'></span></a>
+                    <a href="#events" class='list-group-item nav-event' id='nav-ece' >ECE<span class='glyphicon glyphicon-chevron-right pull-right'></span></a>
+                    <a href="#events" class='list-group-item nav-event' id='nav-eie' >EIE<span class='glyphicon glyphicon-chevron-right pull-right'></span></a>
+                    <a href="#events" class='list-group-item nav-event' id='nav-ee' >EE<span class='glyphicon glyphicon-chevron-right pull-right'></span></a>
+                </div>
+                <div class='well col-xs-10' style='padding-top:0px;padding-bottom:0px;'>
+                    <div id='event-major' class='event'>
+                        <h2>Major Events</h2><hr style='border-color:black'>
+                        <dl class="dl-horizontal">
+                            <dt>IGNITIA</dt>
+                            <dd><p>Too much of technicality makes "jack" a dull boy. So here is your respite the tide of knowledge storm is ravishing, so hold on to the safe rudder of your brain to emerge the winner. <br>(Team Size: 2 member/ team)</p></dd>
+                            <br>
+                            <dt>ROBOTRIX</dt>
+                            <dd>Enter the world of mechanical wisdom. Technology of robots is not new but technology upgrades itself every day. Hence robotics maintains its status as the thriving field of challenge with new inventions paving the way to artificial intelligence. <br>(Team Size: 4 member/ team).</dd>
+                            <br>
+                            <dt>#include wannacode.h</dt>
+                            <dd>This is the clash of the titans in the code masters' arena. So, what's the plan?? "Wanna code"?? <br>(Team Size: 1 member/ team).</dd>
+                            <br>
+                            <dt>TECHNOCRATZ</dt>
+                            <dd>(Technical Paper Presentation) Now's the time for all the creative minds to apply thought and deliver something profound for building tomorrows methodical and industrial world. Participants can choose their own topic. <br>(Team Size: 1 member/ team).</dd>
+                            <br>
+                            <dt>BIZCOGITO</dt>
+                            <dd>It is a platform to foster entrepreneurship at colleges. It will identify innovative start-ups budding at college campuses and showcase them at BCREC. It will help young entrepreneurs with the tools and information to "fail faster to succeed sooner" required in their entrepreneurial venture. This is just the beginning!!!<br>(Team Size: 2 member/ team).</dd>
+                            <br>
+                            <dt>SHOW OFF</dt>
+                            <dd>It’s time to bring to light all the hidden ideas. Show off with wide ranging in its scope will encourage students to display their creativity in accordance with the following themes: VLSI’ZZZZATION: Conglomerating as many ideas as one can within a specified space. <br>Themes:
+                                <br>1. insecure female.
+                                <br>2. social advertising
+                                <br>3. india now and then
+                                <br>4. space invasion
+                                <br>All participant should submit the posters till 22nd feb by 5 pm <br>(Team Size: 2 member/ team).</dd>
+                            </dl>
+                        </div>
+                        <div  id='event-gamathon' class='event' style='display:none;'>
+                            <h2>Gamathon</h2><hr style='border-color:black'>
+                            <dl class="dl-horizontal">
+                                <dt>Counter Strike 1.6</dt>
+                                <dd>
+                                    <ul>
+                                        <li>Each team will consist of 5 members.</li>
+                                        <li>Other rules will be notified ON SPOT.</li>
+                                        <li>Default controls are used.</li>
+                                        <li>Use of any cheat is prohibited; any team attempting to cheat will be disqualified.</li>
+                                        <li>Maps of contest will be disclosed ON SPOT.</li>
+                                        <li>Each round will be knockout.</li>
+                                    </ul>
+                                    ADMIN: Shashank (+91 8016133146) 
+                                </dd>
+                                <br>
+                                <dt>Need For Speed<br> Most Wanted</dt>
+                                <dd>
+                                    <ul>
+                                        <li>Singles Elimination Basis.</li>
+                                        <li>Other Rules will be notified ON SPOT.</li>
+                                        <li>Defaults controls are used.</li>
+                                        <li>Each round is knockout.</li>
+                                        <li>Upon discovery of any player committing any violations regarded as unfair play, that playerwill be disqualified from the tournament. </li>
+                                    </ul>
+                                    ADMIN: Apporv Ashutosh (+91 8670344929)
+                                </dd>
+                                <br>
+                                <dt>FIFA11</dt>
+                                <dd>
+                                    <ul>
+                                        <li>In Horizon we follow the WCG rules, apart from the conditional Q+A and Q+W allowances (meaning NEITHER of the two are allowed in Horizon). Here is a complete set of rules that will be followed in HORIZON:</li>
+                                        <li>Difficulty Level = World Class</li>
+                                        <li>Keeper Level = World Class</li>
+                                        <li>Half-length : 4 minutes.(5 min for semis & 6 mins for the final)</li>
+                                        <li>Injuries = OFF</li>
+                                        <li>Offside = ON</li>
+                                        <li>Bookings = ON</li>
+                                        <li>Radar = ON</li>
+                                        <li>Camera = Any</li>
+                                        <li>Time/Score Display = ON</li>
+                                        <li>Game Speed = Fast</li>
+                                        <li>Adidas Live Season = OFF</li>
+                                        <li># of subs = 5</li>
+                                        <li>Player auto switching = slider all to the left if possible</li>
+                                        <li>Manual Cross = ON</li>
+                                        <li>Manual Through-ball = ON</li>
+                                        <li>NOTE:</li>
+                                        <li>Back-pass is must from kick off.</li>
+                                    </ul>
+                                    <ol>
+                                        <li>If connection is lost in the first half, game will be restarted.</li>
+                                        <li>If connection is lost between 45-75 minutes, players will get the opportunity to play another half.</li>
+                                        <li>If connection is lost after 75 minutes, the latest score will be granted as result.</li>
+                                        <li>Extra time of two one (2) minute halves will be played in the event of a draw after regulation. </li>
+                                    </ol>
+
+                                    I hope you have gotten the answer to your first 3 questions. for the fourth one, no, you can not use any formation other than the preset formations given. 
+
+                                </dd>
+                            </dl>
+                        </div>
+                        <div  id='event-online' class='event' style='display:none;'>
+                            <h2>Online Events</h2><hr style='border-color:black'>
+                            <dl class="dl-horizontal">
+                                <dt>CRYPT-O-CRACK</dt>
+                                <dd>
+                                    <div class='row'>
+                                        <div class='col-xs-6'>
+                                            Online Treasure Hunt. <br>(Team Size: 1 member/team).
+                                        </div>
+                                        <div class='col-xs-6'>
+                                            <a href='http://www.hrzn.in/cryptocrack' target='blank' style='width:60%' class='btn btn-success'>Click to start Crypt-O-Crack</a>
+                                        </div>
+                                    </div>
+                                </dd>
+                                <br>
+                                <dt>Xpozed</dt>
+                                <dd>
+                                    <div class='row'>
+                                        <div class='col-xs-6'>
+                                            Online photography contest. <br>(Team Size: 1 member/ team)
+                                        </div>
+                                        <div class='col-xs-6'>
+                                            <a href='http://hrzn.in/xpozed.php' target='blank' style='width:60%'  class='btn btn-success'>Click to start Xpozed</a>
+                                        </div>
+                                    </div>
+                                </dd>
+                                <br>
+                                <dt>Hack-a-Saurus</dt>
+                                <dd>
+                                    <div class='row'>
+                                        <div class='col-xs-6'>
+                                            Online Coding Competition in collaboration with <a href='https://hackerearth.com'>hackerearth.com</a> 
+                                            <br>(Team Size: 1 member/ team)<br>
+                                        </div>
+                                        <div class='col-xs-6'>
+                                            <a href='http://www.hackerearth.com/hack-a-saurus/' target='blank' style='width:60%'  class='btn btn-success'>Click to start Hacking!</a>
+                                        </div>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div  id='event-cse' class='event' style='display:none;'>
+                            <h2>CSE and IT Departments</h2><hr style='border-color:black'>
+                            <dl class="dl-horizontal">
+                                <dt>Linquest</dt>
+                                <dd>
+                                    How good is your knowledge about Linux? Check it out at LinQuest. <br>(Team Size: 2 member/ team).
+                                </dd>
+                                <br>
+                                <dt>GAME-ON</dt>
+                                <dd>
+                                    Take part in the Game Development Workshop and then try your hands at making one. Ready to challenge the giants? <br>(Team Size: 2 member/team).
+                                </dd>
+                            </dl>
+                        </div>
+                        <div  id='event-me' class='event' style='display:none;'>
+                            <h2>MECH and CE Departments</h2><hr style='border-color:black'>
+                            <dl class="dl-horizontal">
+                                <dt>AUTOCAD DESIGNING</dt>
+                                <dd>Test and flaunt your AutoCAD skills and show them you’re the best. <br>(Team Size: 2 member/ team)</dd>
+                                <br>
+                                <dt>WORKBUZZ</dt>
+                                <dd>An “as awesome as it can get” workshop for mechanical engineers.</dd>
+                                <br>
+                                <dt>MECHTRIX</dt>
+                                <dd>You think you’re good? They don’t. How about giving them an eye opener. A royal “Mechanical Quiz”. <br>(Team Size: 2 member/ team)
+                                </dd>
+                            </dl>
+                            
+                        </div>
+                        <div  id='event-ece' class='event' style='display:none;'>
+                            <h2>ECE Department</h2><hr style='border-color:black'>
+                            <dl class="dl-horizontal">
+                                <dt>WIZZCOMBIZ</dt>
+                                <dd>A brain opening “Electronics Quiz”. <br>(Team Size: 2 member/ team)</dd>
+                                <br>
+                                <dt>JUNKOTRONICS</dt>
+                                <dd>“Turn scrap to gold”
+                                    The primary concern in today’s World is our Environment. The 3 R’s (Reduce, Recycle and Reuse) is the essence to save the environmental degradation. JUNKOTRONICS “turn scrap to gold”. <br>(Team Size: 2 member/ team)</dd>
+                                </dl>
+                            </div>
+                            <div  id='event-eie' class='event' style='display:none;'>
+                                <h2>EIE Department</h2><hr style='border-color:black'>
+                                <dl class="dl-horizontal">
+                                    <dt>CHECKMATE</dt>
+                                    <dd>MOVE BRAIN A000 JNZ 8085 MOVE HANDS A001 CALL KNOWLEDGE RET WIN So, what are you waiting for? Start coding??? <br>(Team Size: 1 member/ team)</dd>
+                                    <br>
+                                    <dt>CATECHIZATION</dt>
+                                    <dd>Knowledge, your only tool in this war. Show us what you got in this “Electronics and Instrumentation Quiz”.<br>(Team Size: 2 member/ team)</dd>
+                                </dl>
+                            </div>
+                            <div  id='event-ee' class='event' style='display:none;'>
+                                <h2>EE Department</h2><hr style='border-color:black'>
+                                <dl class="dl-horizontal">
+                                    <dt>TRACK AND CRACK</dt>
+                                    <dd>Wires hanging out loose and chips standing on Wrong legs. Come on engineers .let’s see your conviction in making the electronic world flawless. <br>(Team Size: 1 member/ team)</dd>
+                                    <br>
+                                    <dt>ELECTROBUZZ</dt>
+                                    <dd>Wires, transformers, inductors and all. Too confusing. Isn’t it? What? You’re good with them. Show us what you got in this “Electrical Quiz”. <br>(Team Size: 2 member/ team)</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+    <!--END OF EVENTS
+    ======================================================================================-->
+
+    <!--GUESTS
+    ======================================================================================-->
+    <div id="guests">
+        <div class="container">
+            <br><br>
+            <h2  style='color:white;'><b>GUESTS</b></h2><hr>
+            <div class='row well'style='margin:1px;opacity:0.9'>
+                <div class='col-xs-2' style='margin-left:10%;'>
+                    <img src='static/images/guests/img1.png'>
+                </div>
+                <div class='col-xs-3'>
+                    <blockquote>
+                        <p>Prof. Samir Bandhopadhyay</p>
+                        <h6><b>Vice Chancellor, WBUT</b></h6>
+                        <br>
+                        <small><cite title="Source Title"><b>Chief Guest</b><i class="icon-map-marker"></i></cite></small>
+                        <br>
+                    </blockquote>
+                </div>
+                <div class='col-xs-2'>
+                    <img src='static/images/guests/img2.png'>
+                </div>
+                <div class='col-xs-3'>
+                    <blockquote>
+                        <p>Shahid Ali Farooqui</p>
+                        <h6><b>Mozilla Reps</b></h6>
+                        <br><br>
+                        <small><cite title="Source Title"><b>Mozcafe@bcrec</b><i class="icon-map-marker"></i></cite></small>
+                        <br>
+                    </blockquote>
+                </div>
+            </div>
+        </div><br>
+    </div>
+    <!-- END OF GUESTS 
+    ========================================================================================-->
+
+    <!--SPONSORS
+    =========================================================================================-->
+    <div id="sponsors">
+        <div class="container">
+            <br><br>
+            <h2 style='color:white;'><b>SPONSORS</b></h2><hr>
+
+            <div class='row well' style='margin:1px;'>
+                <div class='col-xs-5'>
+                    <br>
+                    <h1><center><b>Gold Sponsor</b></center></h1>
+                </div>
+                <div class='col-xs-7'>
+                    <a href="#x" class="thumbnail" style='margin-right:20%'><img src="static/images/sponsors/globsynskills.png" alt="Image" height='250' width='500' style="max-width:100%;" /></a>
+                </div>
+            </div>
+            <br>
+            <div id="sponsorCarousel" class="carousel slide" style='height:250px'>
+
+                <ol class="carousel-indicators">
+                    <li data-target="#sponsorCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#sponsorCarousel" data-slide-to="1"></li>
+                    <li data-target="#sponsorCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Carousel items -->
+                <div class="carousel-inner" style='margin-left:15px;'>
+
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class='well'>
+                                    <a href="#x" class="thumbnail"><img src="static/images/sponsors/mywbut.png" alt="Image" height='250' width='250' style="max-width:100%;" /></a>
+                                    <h3><center>Online Partner</center></h3>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class='well'>
+                                    <a href="#x" class="thumbnail"><img src="static/images/sponsors/botrio.jpg" alt="Image" height='200' width='250' /></a>
+                                    <h3><center>Robotics Partner</center></h3>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class='well'>
+                                    <a href="#x" class="thumbnail"><img src="static/images/sponsors/hackerearth.jpg" alt="Image" height='250' width='250' /></a>
+                                    <h3><center>Exam Partner</center></h3>
+                                </div>
+                            </div>
+                        </div><!--/row-fluid-->
+                    </div><!--/item-->
+
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class='well'>
+                                    <a href="#x" class="thumbnail"><img src="static/images/sponsors/knowafest.png" alt="Image" style="max-width:100%;" /></a>
+                                    <h3><center>Online Partner</center></h3>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class='well'>
+                                    <a href="#x" class="thumbnail"><img src="static/images/sponsors/pantaloons.jpg" alt="Image" height='250' width='250' style="max-width:100%;" /></a>
+                                    <h3><center>Merchandise Partner</center></h3>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class='well'>
+                                    <a href="#x" class="thumbnail"><img src="static/images/sponsors/toi.jpg" alt="Image" height='250' width='250' style="max-width:100%;" /></a>
+                                    <h3><center>Media Partner</center></h3>
+                                </div>
+                            </div>
+                        </div><!--/row-fluid-->
+                    </div><!--/item-->
+
+                    <div class="item">
+                        <div class="row">
+                            <div class='col-xs-2'></div>
+                            <div class="col-xs-4">
+                                <div class='well'>
+                                    <a href="#x" class="thumbnail"><img src="static/images/sponsors/lovelyoffers.jpg" alt="Image" style="max-width:100%;" /></a>
+                                    <h3><center>Coupon Partner</center></h3>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class='well'>
+                                    <a href="#x" class="thumbnail"><img src="static/images/sponsors/yuthrepublic.png" alt="Image" height='250' width='250' style="max-width:100%;" /></a>
+                                    <h3><center>Apparel Partner</center></h3>
+                                </div>
+                            </div>
+                        </div><!--/row-fluid-->
+                    </div><!--/item-->
+                </div><!--/carousel-inner-->
+                <a class="left carousel-control"  href="#sponsorCarousel" data-slide="prev" style='height:191px;width:0px;'><span class="label label-success glyphicon glyphicon-chevron-left"></span></a>
+                <a class="right carousel-control"  href="#sponsorCarousel" data-slide="next" style='height:191px;width:0px;'><span class=" label label-success glyphicon glyphicon-chevron-right"></span></a>
+
+            </div><!--/sponsorCarousel-->
+        </div>
+        <br><br>
+    </div>
+    <!--END OF SPONSORS
+    =========================================================================================-->
+
+    <!--GALLERY
+    ==========================================================================================-->
+    <div id="gallery">
+        <div class="container">
+            <br><br>
+            <h2 style='color:white;'><b>GALLERY</b></h2><hr>
+            <div id="galleryCarousel" class="carousel slide" style='padding:0px;'>
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#galleryCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="1"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="2"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="3"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="4"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="5"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="6"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="7"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="8"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="9"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="10"></li>
+                    <li data-target="#galleryCarousel" data-slide-to="11"></li>
+                </ol>
+                <div class="carousel-inner" style='height: 550px;'>
+                    <div class="item active">
+                        <img class='carousel-image' src="static/images/gallery/pic2.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class="label label-primary">Ignitia</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic4.jpg" >
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>Crypt-O-Crack</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic5.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>Gamathon</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic6.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>Game-On</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic7.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>Mozcafe 2013</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic8.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>Mozcafe 2013</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic9.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>MozCafe 2013</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic10.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>RoboTrix Design Lab</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic11.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>Winning Team of RoboTrix 2013</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic12.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>RoboTrix 2013</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic13.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>RoboTrix Design Lab</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class='carousel-image' src="static/images/gallery/pic14.jpg">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h4><span class='label label-primary'>RoboTrix Design Lab</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#galleryCarousel" data-slide="prev"><span class="label label-info glyphicon glyphicon-chevron-left"></span></a>
+                <a class="right carousel-control" href="#galleryCarousel" data-slide="next" style='margin-right:12px;'><span class="label label-info glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div><!-- /.carousel -->
+    </div>
+    <!--END OF GALLERY
+    ==========================================================================================-->
+
+    <!--VIDEO
+    ============================================================================================-->
+    <div id="videos">
+        <div class="container">
+            <br><br>
+            <h2 style='color:white;'><b>VIDEOS</b></h2><hr>
+
+            <div style="margin: 0 auto;text-align:center;">
+                <div id="videoCarousel" class="carousel slide" style='padding:0px;'>
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#videoCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#videoCarousel" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner" style='height: 550px;'>
+                        <div class="item active">
+                            <iframe width="720" height="480" src="http://www.youtube.com/embed/EX9X0G9pcdE?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="item">
+                            <iframe width="720" height="480" src="http://www.youtube.com/embed/QrSNWLjcf9U?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#videoCarousel" data-slide="prev"><span class="label label-danger glyphicon glyphicon-chevron-left"></span></a>
+                    <a class="right carousel-control" href="#videoCarousel" data-slide="next" style='margin-right:12px;'><span class="label label-danger glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!--END OF VIDEO
+    ============================================================================================-->
+
+    <!--CONTACT US
+    ============================================================================================-->
+    <div id="contactus">
+        <div class="container">
+            <br><br>
+            <h2 style='color:white;'><b>CONTACT US</b></h2><hr>
+
+            <div class='row' style='margin:0px;'>
+                <div class='well col-xs-3' style='margin-right:4.3%;opacity:0.95'>
+                    <h3 style='text-align:center;'>Contact Form</h3><hr style='border-color:grey;'>
+                    <form method='post'>
+                        <input type='text' class='form-control' placeholder='Name' required><br>
+                        <input type='email' class='form-control' placeholder='Email' required><br>
+                        <textarea class='form-control' placeholder='Message'  required rows='5'></textarea><br>
+
+                        <button type='reset' class='btn btn-default'>Reset</button>
+                        <button type='submit' class='btn btn-success pull-right'>Submit</button>
+                    </form>
+                    
+                </div>
+                <div class='well col-xs-5' style='opacity:0.95'>
+                    <h3 style='text-align:center;'>Map Location</h3><hr style='border-color:grey;'>
+                    <iframe width="425" height="251" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=BCREC+durgapur&amp;aq=&amp;sll=23.542783,87.344913&amp;sspn=0.024432,0.042272&amp;ie=UTF8&amp;hq=&amp;hnear=&amp;t=m&amp;ll=23.543943,87.342918&amp;spn=0.003442,0.00456&amp;z=17&amp;output=embed"></iframe><br /><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=BCREC+durgapur&amp;aq=&amp;sll=23.542783,87.344913&amp;sspn=0.024432,0.042272&amp;ie=UTF8&amp;hq=&amp;hnear=&amp;t=m&amp;ll=23.543943,87.342918&amp;spn=0.003442,0.00456&amp;z=17" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+                </div>
+                <div class='well col-xs-3' style='margin-left:4%;height:403px;opacity:0.95'>
+                    <h3 style='text-align:center;'>Get in touch</h3>
+                    <hr style='border-color:grey;'>
+                    <h4><b>College Address :</b></h4>
+                    <p>Dr.B.C. Roy Engineering College,
+                        Fuljhore,<br>
+                        Durgapur : 713206,<br>
+                        West Bengal.</p>
+                        <br><h4><b>Email us at :</b></h4>
+                        <a href='mailto:info@hrzn.in'><b>info@hrzn.in</b></a>
+
+                    </div>
+                </div>
+            </div>
+            <br><br><br>
+            <p style='color:white;text-align:center;'><b>Website by <a style='color:lightgreen'href='http://desouradeep.wordpress.com' target='blank'>Souradeep De</b></a></p>
+            <br>
+        </div>
+    <!--END OF CONTACT US
+    ============================================================================================-->
+    <b></b>
+</body>
 </html>
